@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="emailService" class="org.example.EmailService">
+        <property name="object" value="Information email"/>
+        <property name="message" value="Hello! I sent you email"/>
+        <property name="destination">
+            <list>
+                <value>User1@gmail.com</value>
+                <value>User2@yahoo.com</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="twitterService" class="org.example.TwitterService">
+        <property name="object" value="Information tweet"/>
+        <property name="message" value="Hello! I sent you tweet"/>
+        <property name="destination">
+            <list>
+                <value>User1@twitter.com</value>
+                <value>User2@twitter.com</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="userService" class="org.example.UserService" autowire="constructor">
+<!--        <property name="emailService" ref="emailService"/>-->
+<!--        <property name="twitterService" ref="twitterService"/>-->
+    </bean>
+</beans>
