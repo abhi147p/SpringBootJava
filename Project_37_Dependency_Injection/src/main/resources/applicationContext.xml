@@ -4,7 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
             http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="mail" class="org.example.EmailService">
+    <bean id="emailService" class="org.example.EmailService">
         <property name="object" value="Inform!"/>
         <property name="message" value="Hello I send you an email"/>
         <property name="destination">
@@ -14,7 +14,51 @@
             </list>
         </property>
     </bean>
-    <bean id="userService" class="org.example.UserService">
-        <constructor-arg ref="mail"/>
+
+    <bean id="twitterService" class="org.example.TwitterService">
+        <property name="object" value="Inform!"/>
+        <property name="message" value="Hello I send you an tweet"/>
+        <property name="destination">
+            <list>
+                <value>user1@twitter.com</value>
+                <value>user2@twitter.com</value>
+            </list>
+        </property>
     </bean>
+<!--    autowiring = no-->
+    <!--
+    <bean id="userService" class="org.example.UserService" autowire="no">
+        <property name="emailService" ref="emailService"/>
+        <property name="twitterService" ref="twitterService"/>
+    </bean>
+    -->
+<!--    autowiring = byName-->
+    <!--
+    <bean id="userService" class="org.example.UserService" autowire="byName">
+    </bean>
+    -->
+<!--    autowiring = byType
+Here, as it is by Type, we need to provide the property values to differentiate between them.
+-->
+    <!--
+    <bean id="userService" class="org.example.UserService" autowire="byType">
+        <property name="emailService" ref="emailService"/>
+        <property name="twitterService" ref="twitterService"/>
+    </bean> -->
+<!--    autowiring = constructor
+Here, as it is constructor, we need to provide the property values to differentiate between them.
+-->
+    <!--
+    <bean id="userService" class="org.example.UserService" autowire="byType">
+        <property name="emailService" ref="emailService"/>
+        <property name="twitterService" ref="twitterService"/>
+    </bean> -->
+<!--    autowiring = constructor
+Here, as it is constructor, if we do not want to provide the properties, then we need to update the args of constructor services type in the user service class.
+Also, we need to generate the constructors there.
+-->
+    <bean id="userService" class="org.example.UserService" autowire="constructor">
+    </bean>
+
+
 </beans>

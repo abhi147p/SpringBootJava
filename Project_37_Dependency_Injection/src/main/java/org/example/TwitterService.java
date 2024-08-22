@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.List;
 
-public class EmailService implements MessageService{
+public class TwitterService implements MessageService{
 
     private String object;
     private List<String> destination;
@@ -37,7 +37,7 @@ public class EmailService implements MessageService{
         if(this.object == null || this.message == null || this.destination == null)
             return false;
 
-        System.out.println("Email object: "+this.object+", Message: "+this.message+" sent to:");
+        System.out.println("Twitter with object: "+this.object+", Message: "+this.message+" sent to:");
         this.destination.forEach(System.out::println);
         return true;
     }
