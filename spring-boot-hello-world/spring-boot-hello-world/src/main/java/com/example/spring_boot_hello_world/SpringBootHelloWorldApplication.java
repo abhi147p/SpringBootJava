@@ -1,5 +1,7 @@
 package com.example.spring_boot_hello_world;
 
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.Arrays;
 
 @SpringBootApplication
-public class SpringBootHelloWorldApplication implements CommandLineRunner {
+public class SpringBootHelloWorldApplication implements ApplicationRunner {
 
 	public static void main(String[] args) {
 
@@ -15,9 +17,8 @@ public class SpringBootHelloWorldApplication implements CommandLineRunner {
 	}
 
 	@Override
-	public void run(String... args) throws Exception {
+	public void run(ApplicationArguments args) throws Exception {
 		System.out.println(" *** Show Arguments *** ");
-		Arrays.stream(args).forEach(System.out::println);
-		// For passing the args, we can do using the edit configurations.
+		Arrays.stream(args.getSourceArgs()).forEach(System.out::println);
 	}
 }
