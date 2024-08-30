@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en-us"
-        xmlns:sec="http://www.thymeleaf.org/extras/springsecurity5">
+        xmlns:sec="http://www.thymeleaf.org/extras/springsecurity6">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -12,7 +12,7 @@
 
 <body>
 <div class="container my-2">
-    Hello <b sec:authentication="principal.username">[No Username]</b>
+    Hello <b sec:authentication="name">[No Username]</b>
     <a href="/logout" style="float:right">Logout</a>
     <div class="card">
         <div class="card-body">
@@ -21,7 +21,7 @@
 <!--                    <i class="fas fa-solid fa-plus"> Add Book</i>-->
 <!--                </a>-->
                 <p class="my-5">
-                    <a th:href="@{/edit}" class="btn btn-success" sec:authorize="hasAnyRole('ADMIN', 'PUBLISHER')">
+                    <a th:href="@{/edit}" class="btn btn-success" sec:authorize="hasAnyAuthority('ADMIN', 'PUBLISHER')">
                         <i class="fas fa-solid fa-plus"> Add Book</i>
                     </a>
                 </p>
@@ -44,12 +44,12 @@
                             <td th:text="${book.description}"></td>
                             <td th:text="${book.price}"></td>
                             <td>
-                                <a th:href="@{/edit/{id}(id=${book.id})}" class="btn btn-warning" sec:authorize="hasAnyRole('ADMIN', 'PUBLISHER')">
+                                <a th:href="@{/edit/{id}(id=${book.id})}" class="btn btn-warning" sec:authorize="hasAnyAuthority('ADMIN', 'PUBLISHER')">
                                     <i class="fas fa-solid fa-edit"></i>
                                 </a>
                             </td>
                             <td>
-                                <a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-danger" sec:authorize="hasAnyRole('ADMIN')">
+                                <a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-danger" sec:authorize="hasAnyAuthority('ADMIN')">
                                     <i class="fas fa-solid fa-trash"></i>
                                 </a>
                             </td>

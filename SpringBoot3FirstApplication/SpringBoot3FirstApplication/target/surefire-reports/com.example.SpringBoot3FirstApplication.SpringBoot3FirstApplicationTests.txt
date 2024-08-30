@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.example.SpringBoot3FirstApplication.SpringBoot3FirstApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.843 s -- in com.example.SpringBoot3FirstApplication.SpringBoot3FirstApplicationTests
